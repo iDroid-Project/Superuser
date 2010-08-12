@@ -338,7 +338,6 @@ public class AppListActivity extends ListActivity implements View.OnClickListene
    			}
    		}
 
-   		@Override
 		public void onScrollStateChanged(AbsListView view, int scrollState) {
 			
 		}
