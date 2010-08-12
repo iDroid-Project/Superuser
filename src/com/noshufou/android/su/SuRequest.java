@@ -92,7 +92,6 @@ public class SuRequest extends Activity implements OnClickListener {
 		return super.onKeyDown(keyCode, event);
 	}
 
-	@Override
 	public void onClick(View v) {
 		mCountDown.cancel();
     	AppDetails appDetails = new AppDetails(mCallerUid, 0, System.currentTimeMillis());

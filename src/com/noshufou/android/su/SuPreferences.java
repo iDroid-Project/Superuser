@@ -38,7 +38,6 @@ public class SuPreferences extends PreferenceActivity implements OnSharedPrefere
 		getPreferenceScreen().getSharedPreferences().unregisterOnSharedPreferenceChangeListener(this);
 	}
 
-	@Override
 	public void onSharedPreferenceChanged(SharedPreferences sharedPreferences,
 			String key) {
 		if (key.equals("pref_notifications")) {

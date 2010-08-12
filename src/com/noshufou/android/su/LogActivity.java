@@ -195,7 +195,6 @@ public class LogActivity extends ListActivity {
 			mIndexer = new DateIndexer(mContext, cursor, cursor.getColumnIndex(Logs.DATE));
 		}
 		
-		@Override
 		public Object [] getSections() {
 			if (mIndexer == null) {
 				return new String[] { " " };
@@ -204,7 +203,6 @@ public class LogActivity extends ListActivity {
 			}
 		}
 
-		@Override
 		public int getPositionForSection(int section) {
 			if (mIndexer == null) {
 				return -1;
@@ -214,7 +212,6 @@ public class LogActivity extends ListActivity {
 			}
 		}
 
-		@Override
 		public int getSectionForPosition(int position) {
 			if (mIndexer == null) {
 				return -1;
@@ -223,7 +220,6 @@ public class LogActivity extends ListActivity {
 			}
 		}
 
-		@Override
 		public void onScroll(AbsListView view, int firstVisibleItem,
 				int visibleItemCount, int totalItemCount) {
 			if (view instanceof PinnedHeaderListView) {
@@ -231,12 +227,10 @@ public class LogActivity extends ListActivity {
 			}
 		}
 
-		@Override
 		public void onScrollStateChanged(AbsListView view, int scrollState) {
 			
 		}
 
-		@Override
 		public int getPinnedHeaderState(int position) {
 			if (mIndexer == null || mCursor == null || mCursor.getCount() == 0) {
 				return PINNED_HEADER_GONE;
@@ -255,7 +249,6 @@ public class LogActivity extends ListActivity {
 			return PINNED_HEADER_VISIBLE;
 		}
 
-		@Override
    		public void configurePinnedHeader(View header, int position, int alpha) {
    			PinnedHeaderCache cache = (PinnedHeaderCache)header.getTag();
    			if (cache == null) {

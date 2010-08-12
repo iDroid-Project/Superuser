@@ -46,7 +46,6 @@ public class DateIndexer implements SectionIndexer {
 		}
 	}
 
-	@Override
 	public int getPositionForSection(int section) {
 		if (mCursor == null) {
 			return 0;
@@ -92,7 +91,6 @@ public class DateIndexer implements SectionIndexer {
 		return 0;
 	}
 
-	@Override
 	public int getSectionForPosition(int position) {
 		int savedCursorPos = mCursor.getPosition();
 		mCursor.moveToPosition(position);
@@ -104,7 +102,6 @@ public class DateIndexer implements SectionIndexer {
 		return todayInt - dateInt;
 	}
 
-	@Override
 	public Object[] getSections() {
 		return mSections;
 	}
