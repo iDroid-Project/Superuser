@@ -2,10 +2,23 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">Superuser</string>
     <string name="app_name_request">Superuser Request</string>
-    <string name="app_name_perms">Superuser Permissions</string>
+    
+    <!-- Do not translate -->
+    <string name="expected_su_version">2.3.1</string>
+    <string name="update_filename">su-2.3.1-bin-signed.zip</string>
 
     <string name="permlab_respond">respond to superuser requests</string>
-    <string name="permdesc_respond">Allows the application to respond to requests for superuser access. Malicious applications grant permissions to apps that the user has not explicitly given permission to.</string>
+    <string name="permdesc_respond">Allows the application to respond to requests for superuser access.</string>
+    
+    <string name="new_su">New version of su</string>
+    <string name="new_su_msg">There is a new version of the su binary available. Press \'Ok\' to attempt to install it automatically.</string>
+    <string name="su_updated">su binary updated successfully</string>
+    <string name="su_not_updated_title">Automatic update failed</string>
+    <string name="su_not_updated">An error occurred and su was not updated. A zip file (su-2.3.1-bin-signed.zip) has been placed on your sdcard, please reboot into recovery mode and flash it to update your su binary.</string>
+    
+    <string name="tab_apps">Apps</string>
+    <string name="tab_log">Log</string>
+    <string name="tab_settings">Settings</string>
 
     <string name="allow">Allow</string>
     <string name="forget">Forget</string>
@@ -57,7 +70,7 @@
     <string name="pref_notification_summary">Type of notification to show when an app is granted SU permissions</string>
     <string name="pref_category_info_title">Superuser information</string>
     <string name="pref_version_title">Superuser v%s</string>
-    <string name="pref_version_summary">su v%s</string>
+    <string name="pref_version_summary">su v%s, Database version %s</string>
 
     <string name="notification_text">%s has been granted Superuser permissions</string>
 </resources>
