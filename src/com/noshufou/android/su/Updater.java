@@ -71,7 +71,6 @@ public class Updater {
                 .setMessage(R.string.new_su_msg)
                 .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
 
-                    @Override
                     public void onClick(DialogInterface dialog, int which) {
                         try {
                             new DownloadFileTask()

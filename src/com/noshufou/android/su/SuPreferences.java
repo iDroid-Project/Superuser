@@ -51,7 +51,6 @@ public class SuPreferences extends PreferenceActivity implements OnSharedPrefere
 		}
 	}
 
-	@Override
     public boolean onPreferenceClick(Preference preference) {
 	    if (preference.getKey().equals("pref_bin_version")) {
 	        Toast.makeText(this, R.string.checking, Toast.LENGTH_SHORT).show();
