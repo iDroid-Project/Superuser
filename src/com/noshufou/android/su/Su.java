@@ -103,7 +103,6 @@ public class Su extends TabActivity {
 	            .setMessage(getString(R.string.malicious_app_found, packageName))
 	            .setPositiveButton(R.string.uninstall, new DialogInterface.OnClickListener() {
                     
-                    @Override
                     public void onClick(DialogInterface dialog, int which) {
                         Uri packageUri = Uri.parse("package:" + packageName);
                         Intent intent = new Intent(Intent.ACTION_DELETE, packageUri);
@@ -112,7 +111,6 @@ public class Su extends TabActivity {
                 })
                 .setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
                     
-                    @Override
                     public void onClick(DialogInterface dialog, int which) {
                         new CheckForMaliciousApps().execute();
                     }
@@ -129,7 +127,6 @@ public class Su extends TabActivity {
 	        .setMessage(R.string.report_msg)
 	        .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
 
-	            @Override
 	            public void onClick(DialogInterface dialog, int which) {
 	                Intent email = new Intent(Intent.ACTION_SEND);
 	                email.setType("plain/text");
@@ -143,7 +140,6 @@ public class Su extends TabActivity {
 	        })
 	        .setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
                 
-                @Override
                 public void onClick(DialogInterface dialog, int which) {
                     new CheckForMaliciousApps().execute();
                 }
