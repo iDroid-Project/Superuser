@@ -89,7 +89,7 @@ public class Su extends TabActivity {
 		}
 		Log.d(TAG, "First run for version " + versionCode);
 		
-		String suVer = getSuVersion();
+		String suVer = getSuVersion(this);
 		Log.d(TAG, "su version: " + suVer);
 		new Updater(this, suVer).doUpdate();
 		
@@ -151,27 +151,30 @@ public class Su extends TabActivity {
 	    }
     }
 
-    public static String getSuVersion()
+    public static String getSuVersion(Context context)
     {
     	Process process = null;
     	try {
     		process = Runtime.getRuntime().exec("su -v");
     		InputStream processInputStream = process.getInputStream();
     		BufferedReader stdInput = new BufferedReader(new InputStreamReader(processInputStream));
-    		Thread.sleep(500);
     		try {
-    			if (stdInput.ready()) {
-    				String suVersion = stdInput.readLine();
-    				return suVersion;
-    			} else {
-    				return " " + R.string.su_original;
+    			int counter = 0;
+    			while(counter < 20) {
+	   				Thread.sleep(50);
+	    			if (stdInput.ready()) {
+	    				String suVersion = stdInput.readLine();
+	    				return suVersion;
+	    			}
+	    			counter++;
     			}
+    			return " " + context.getString(R.string.su_original);
     		} finally {
     			stdInput.close();
     		}
     	} catch (IOException e) {
     		Log.e(TAG, "Call to su failed. Perhaps the wrong version of su is present", e);
-    		return " " + R.string.su_original;
+    		return " " + context.getString(R.string.su_original);
     	} catch (InterruptedException e) {
     		Log.e(TAG, "Call to su failed.", e);
     		return " ...";

@@ -1,5 +1,6 @@
 package com.noshufou.android.su;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.content.pm.PackageInfo;
@@ -15,11 +16,15 @@ import android.widget.Toast;
 public class SuPreferences extends PreferenceActivity implements OnSharedPreferenceChangeListener,
         OnPreferenceClickListener {
 //	private static final String TAG = "Su.SuPreferences";
+    
+    private Context mContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.preferences);
+        
+        mContext = this;
 
         Preference versionPreference = getPreferenceScreen().findPreference("pref_version");
         versionPreference.setTitle(getString(R.string.pref_version_title, getSuperuserVersion()));
@@ -28,7 +33,7 @@ public class SuPreferences extends PreferenceActivity implements OnSharedPrefere
         db.close();
 
         Preference binVersionPreference = getPreferenceScreen().findPreference("pref_bin_version");
-        new ShowBinVersion().execute();
+        updateSuVersionInformation();
         binVersionPreference.setOnPreferenceClickListener(this);
 
         Preference clearLogPreference = getPreferenceScreen().findPreference("pref_clear_log");
@@ -59,7 +64,7 @@ public class SuPreferences extends PreferenceActivity implements OnSharedPrefere
     public boolean onPreferenceClick(Preference preference) {
 	    if (preference.getKey().equals("pref_bin_version")) {
 	        Toast.makeText(this, R.string.checking, Toast.LENGTH_SHORT).show();
-	        new Updater(this, Su.getSuVersion()).doUpdate();
+	        new Updater(this, Su.getSuVersion(mContext)).doUpdate();
 	        return true;
 	    } else if (preference.getKey().equals("pref_clear_log")) {
 	        DBHelper db = new DBHelper(this);
@@ -70,6 +75,10 @@ public class SuPreferences extends PreferenceActivity implements OnSharedPrefere
 	        return false;
 	    }
     }
+	
+	public void updateSuVersionInformation() {
+		new ShowBinVersion().execute();
+	}
 
     private String getSuperuserVersion()
     {
@@ -92,7 +101,7 @@ public class SuPreferences extends PreferenceActivity implements OnSharedPrefere
 
         @Override
         protected Boolean doInBackground(String... params) {
-            suVersion = Su.getSuVersion();
+            suVersion = Su.getSuVersion(mContext);
             return null;
         }
 
